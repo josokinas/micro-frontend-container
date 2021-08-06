@@ -24,9 +24,6 @@ jobs:
         if: github.actor != 'dependabot[bot]' # allow long commit message body
         run: npm run lint:commit
 
-      - name: Run stylelint
-        run: npm run lint:style
-
       - name: Run ESLint
         run: npm run lint:es
 

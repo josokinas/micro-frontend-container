@@ -1,5 +1,3 @@
-import './styles.scss';
-
 const modules = {
   A: import('https://josokinas.github.io/micro-frontend-a/index.js'),
   B: import('https://josokinas.github.io/micro-frontend-b/index.js'),
