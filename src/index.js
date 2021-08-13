@@ -15,7 +15,7 @@ Object.entries(modules).forEach(async ([name, imports]) => {
   window.MFE[name].root.id = `${name}-JS`;
   document.body.appendChild(window.MFE[name].root);
 
-  window.MFE[name].render();
+  window.MFE[name].render({ testProp: 'testValue' });
 
   const link = document.createElement('link');
   link.id = `${name}-CSS`;
