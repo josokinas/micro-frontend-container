@@ -1,28 +1,13 @@
 const modules = {
-  A: {
-    js: 'https://josokinas.github.io/micro-frontend-a/index.js',
-    css: 'https://josokinas.github.io/micro-frontend-a/index.css',
-  },
-  B: {
-    js: 'https://josokinas.github.io/micro-frontend-b/index.js',
-    css: 'https://josokinas.github.io/micro-frontend-b/index.css',
-  },
+  A: 'https://josokinas.github.io/micro-frontend-a/index.js',
+  B: 'https://josokinas.github.io/micro-frontend-b/index.js',
 };
 
-Object.entries(modules).forEach(async ([name, imports]) => {
-  await import(imports.js);
+Object.entries(modules).forEach(async ([name, source]) => {
+  await import(source);
 
-  window.MFE[name].root.id = `${name}-JS`;
+  window.MFE[name].root.id = name;
   document.body.appendChild(window.MFE[name].root);
 
   window.MFE[name].render({ testProp: 'testValue' });
-
-  const link = document.createElement('link');
-  link.id = `${name}-CSS`;
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-  link.href = imports.css;
-
-  const [head] = document.getElementsByTagName('HEAD');
-  head.appendChild(link);
 });
