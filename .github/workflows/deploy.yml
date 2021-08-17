@@ -23,7 +23,9 @@ jobs:
         run: npm ci --no-audit --no-optional
 
       - name: Build app
-        run: npm run build -- --public-url /micro-frontend-container
+        env:
+          PUBLIC_URL: /micro-frontend-container
+        run: npm run build -- --public-url ${{ env.PUBLIC_URL }}
 
       - name: Publish app
         uses: peaceiris/actions-gh-pages@v3
